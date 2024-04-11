@@ -1,17 +1,20 @@
 from whois import whois 
 from boto3 import client 
 from json import loads, dumps
+from subprocess import run
 from botocore.exceptions import exceptions
-from os import environ 
+from os import environ, system 
 from traceback import format_exc as traceback
 
 import logging
 logger = logging.getLogger()
 logger.setLevel("INFO")
 
-def get_ips_from_whois(domain:string):
+# Uses local whois binary for executing reverse searches
+def get_ips_from_reverse_whois_lookup(domain:string):
     '''Updates the AWS WAF IP set'''
     try:
+        lookup = run(f"whois -h {environ['WHOIS_HOST']} | grep ^route")
         return whois(domain)
     except Exception as e:
         return logger.error(f'Function failed with code: {e} \n full call trace: {traceback()}') 
