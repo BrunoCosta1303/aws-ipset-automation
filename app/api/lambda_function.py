@@ -13,12 +13,12 @@ disable_warnings(exceptions.InsecureRequestWarning)
 waf_client = boto3.client('wafv2', region_name='us-east-1')
 
 IPV4_IP_LIST = []
-IPV4_SET_ID=environ['IPV4_SET_ID'].strip() #"block-seo-ipsets-ipv4" 
-IPV4_SET_NAME=environ['IPV4_SET_NAME'].strip() #"block-seo-ipsets-ipv4" 
+IPV4_SET_ID=environ['IPV4_SET_ID'].strip() 
+IPV4_SET_NAME=environ['IPV4_SET_NAME'].strip()  
 
 IPV6_IP_LIST = []
-IPV6_SET_ID=environ['IPV6_SET_ID'].strip() #"block-seo-ipsets-ipv6" 
-IPV6_SET_NAME=environ['IPV6_SET_NAME'].strip() #"block-seo-ipsets-ipv6" 
+IPV6_SET_ID=environ['IPV6_SET_ID'].strip()  
+IPV6_SET_NAME=environ['IPV6_SET_NAME'].strip()  
 
 def bot_ip_addresses():
     bots_urls = [
