@@ -18,9 +18,12 @@ def get_reverse_lookup(ASN:str) -> list:
     -------
     ip_range : List with all ip blocks refference
     """
-    response = get(f"https://ipinfo.io/{ASN}?token=")
-    print(response)
+    response = get(f"https://api.hackertarget.com/aslookup/?q={ASN}")
+    #print(response.text)
     ip_range = []
+    print() ## Check  on how to jsonize or list the response without breaking it
+    for line in response.content:
+        print(line)
     return ip_range
 
 print(get_reverse_lookup(""))
